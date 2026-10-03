@@ -1,0 +1,78 @@
+.app-footer {
+  margin-top: auto;
+  border-top: 1px solid var(--app-border);
+  background: var(--app-surface);
+  color: var(--app-text-muted);
+  padding: 2.5rem 1.5rem 2rem;
+}
+
+.footer-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  justify-content: space-between;
+
+  @media (min-width: 768px) {
+    flex-direction: row;
+    align-items: center;
+  }
+}
+
+.footer-brand {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+
+  .footer-logo {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: #f1f5f9;
+    font-weight: 700;
+    font-size: 1.1rem;
+
+    .footer-icon {
+      color: var(--app-primary-light);
+    }
+  }
+
+  .footer-desc {
+    font-size: 0.875rem;
+    color: var(--app-text-subtle);
+    max-width: 400px;
+    line-height: 1.5;
+  }
+}
+
+.footer-meta {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+
+  @media (min-width: 768px) {
+    align-items: flex-end;
+  }
+}
+
+.tech-pills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+
+  .pill {
+    font-size: 0.75rem;
+    font-weight: 500;
+    padding: 0.2rem 0.55rem;
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 9999px;
+    color: var(--app-text-muted);
+  }
+}
+
+.footer-copyright {
+  font-size: 0.8rem;
+  color: var(--app-text-subtle);
+}

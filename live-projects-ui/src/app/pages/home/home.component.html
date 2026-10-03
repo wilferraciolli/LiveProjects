@@ -1,0 +1,100 @@
+<div class="home-page-container">
+  <!-- Hero Section -->
+  <section class="hero-section">
+    <div class="hero-content">
+      <div class="hero-badge">
+        <mat-icon class="badge-icon">rocket_launch</mat-icon>
+        <span>Wiltech Labs Live Showcase</span>
+      </div>
+      <h1 class="hero-title">
+        High-Performance <span class="gradient-text">Live Projects</span> & Microservices
+      </h1>
+      <p class="hero-subtitle">
+        Explore enterprise-grade applications, AI agents, identity portals, and data streaming engines engineered with Python, Angular, Clerk, and PostgreSQL.
+      </p>
+
+      <div class="hero-stats">
+        <div class="stat-item">
+          <span class="stat-value">{{ store.projectCount() }}</span>
+          <span class="stat-label">Active Projects</span>
+        </div>
+        <div class="stat-divider"></div>
+        <div class="stat-item">
+          <span class="stat-value">100%</span>
+          <span class="stat-label">Cloud Native</span>
+        </div>
+        <div class="stat-divider"></div>
+        <div class="stat-item">
+          <span class="stat-value">Angular 22</span>
+          <span class="stat-label">Signal Architecture</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Filter & Controls Section -->
+  <section class="controls-section">
+    <div class="filter-wrapper">
+      <!-- Search Input -->
+      <div class="search-box">
+        <mat-icon class="search-icon">search</mat-icon>
+        <input
+          type="text"
+          placeholder="Search projects, technologies, or keywords..."
+          [value]="store.searchFilter()"
+          (input)="onSearchChange($event)"
+          class="custom-search-input"
+          aria-label="Search projects"
+        />
+        @if (store.searchFilter()) {
+          <button (click)="clearSearch()" class="clear-btn" aria-label="Clear search">
+            <mat-icon>close</mat-icon>
+          </button>
+        }
+      </div>
+
+      <!-- Tech Stack Filter Chips -->
+      <div class="tech-filter-chips">
+        <button
+          type="button"
+          class="filter-chip"
+          [class.active]="store.selectedTechFilter() === null"
+          (click)="onTechSelect(null)"
+        >
+          All
+        </button>
+        @for (tech of store.allTechStacks(); track tech) {
+          <button
+            type="button"
+            class="filter-chip"
+            [class.active]="store.selectedTechFilter() === tech"
+            (click)="onTechSelect(tech)"
+          >
+            {{ tech }}
+          </button>
+        }
+      </div>
+    </div>
+  </section>
+
+  <!-- Projects Grid Section -->
+  <section class="projects-section">
+    @if (store.filteredProjects().length > 0) {
+      <div class="projects-grid">
+        @for (project of store.filteredProjects(); track project.id) {
+          <app-project-card [project]="project" />
+        }
+      </div>
+    } @else {
+      <div class="empty-state">
+        <mat-icon class="empty-icon">search_off</mat-icon>
+        <h2 class="empty-title">No projects matched your criteria</h2>
+        <p class="empty-subtitle">Try adjusting your search terms or clearing the selected technology filter.</p>
+        <button mat-stroked-button (click)="clearSearch()" class="reset-filter-btn">
+          <mat-icon>refresh</mat-icon>
+          Reset Filters
+        </button>
+      </div>
+    }
+  </section>
+</div>

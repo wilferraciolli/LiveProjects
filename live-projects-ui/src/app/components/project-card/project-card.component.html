@@ -1,0 +1,68 @@
+<mat-card class="modern-project-card" appearance="outlined">
+  <!-- Card Header -->
+  <mat-card-header class="card-header">
+    <div mat-card-avatar class="card-avatar">
+      <mat-icon>{{ project().iconName || 'folder' }}</mat-icon>
+    </div>
+    <div class="header-text-container">
+      <div class="category-status-row">
+        <span class="category-tag">{{ project().category }}</span>
+        <span class="status-indicator" [class]="getStatusClass(project().status)">
+          <span class="status-dot"></span>
+          {{ project().status }}
+        </span>
+      </div>
+      <mat-card-title class="card-title">{{ project().title }}</mat-card-title>
+      <mat-card-subtitle class="card-subtitle">{{ project().subtitle }}</mat-card-subtitle>
+    </div>
+  </mat-card-header>
+
+  <!-- Card Content -->
+  <mat-card-content class="card-content">
+    <p class="description-text">
+      {{ project().description }}
+    </p>
+
+    <!-- Tech Stack Chips -->
+    <div class="tech-stack-section">
+      <div class="tech-chips-list">
+        @for (tech of project().techStack; track tech) {
+          <span class="tech-chip">{{ tech }}</span>
+        }
+      </div>
+    </div>
+
+    <!-- Quick External Links -->
+    <div class="quick-links-section">
+      <span class="section-label">Direct Access</span>
+      <div class="links-list">
+        @for (link of project().links; track link.url) {
+          <a
+            [href]="link.url"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="external-link-btn"
+            [matTooltip]="'Open ' + link.label + ' in a new tab'"
+            aria-label="Open in new tab"
+          >
+            <mat-icon class="link-icon">{{ link.icon || 'open_in_new' }}</mat-icon>
+            <span class="link-label">{{ link.label }}</span>
+            <mat-icon class="launch-icon">north_east</mat-icon>
+          </a>
+        }
+      </div>
+    </div>
+  </mat-card-content>
+
+  <!-- Card Actions -->
+  <mat-card-actions class="card-actions">
+    <a
+      mat-flat-button
+      [routerLink]="['/project', project().id]"
+      class="see-more-btn"
+    >
+      <span>See Details & Specs</span>
+      <mat-icon class="btn-arrow">arrow_forward</mat-icon>
+    </a>
+  </mat-card-actions>
+</mat-card>

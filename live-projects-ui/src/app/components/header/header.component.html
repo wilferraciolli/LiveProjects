@@ -1,0 +1,24 @@
+<header class="app-header">
+  <div class="header-container">
+    <a routerLink="/" class="brand-link" aria-label="Wiltech Labs Home">
+      <div class="brand-logo-mark">
+        <mat-icon class="brand-icon">science</mat-icon>
+      </div>
+      <div class="brand-info">
+        <span class="brand-name">{{ brandName() }}</span>
+        <span class="brand-badge">LABS</span>
+      </div>
+    </a>
+
+    <nav class="nav-links">
+      <a mat-button routerLink="/" routerLinkActive="active-link" [routerLinkActiveOptions]="{ exact: true }" class="nav-item">
+        <mat-icon class="nav-icon">dashboard</mat-icon>
+        <span>Projects</span>
+      </a>
+      <a mat-button href="https://github.com/wiltechlabs" target="_blank" rel="noopener noreferrer" class="nav-item">
+        <mat-icon class="nav-icon">code</mat-icon>
+        <span>GitHub</span>
+      </a>
+    </nav>
+  </div>
+</header>

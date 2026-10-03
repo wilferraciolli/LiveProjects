@@ -1,0 +1,192 @@
+<div class="details-page-container">
+  <!-- Back Button Navigation -->
+  <div class="nav-back-bar">
+    <a mat-button routerLink="/" class="back-link">
+      <mat-icon>arrow_back</mat-icon>
+      <span>Back to All Projects</span>
+    </a>
+  </div>
+
+  @if (project(); as p) {
+    <!-- Main Project Header -->
+    <header class="project-header-card">
+      <div class="header-top-row">
+        <div class="project-icon-wrapper">
+          <mat-icon>{{ p.iconName || 'folder' }}</mat-icon>
+        </div>
+        <div class="badges-row">
+          <span class="category-pill">{{ p.category }}</span>
+          <span class="status-pill" [class]="getStatusClass(p.status)">
+            <span class="status-dot"></span>
+            {{ p.status }}
+          </span>
+        </div>
+      </div>
+
+      <div class="header-titles">
+        <h1 class="project-title">{{ p.title }}</h1>
+        <p class="project-subtitle">{{ p.subtitle }}</p>
+      </div>
+
+      <!-- Quick Action Buttons -->
+      <div class="quick-actions-bar">
+        @if (p.uiUrl) {
+          <a
+            mat-flat-button
+            [href]="p.uiUrl"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="action-btn primary-action-btn"
+          >
+            <mat-icon>launch</mat-icon>
+            <span>Launch Live UI</span>
+          </a>
+        }
+
+        @if (p.apiUrl) {
+          <a
+            mat-stroked-button
+            [href]="p.apiUrl"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="action-btn"
+          >
+            <mat-icon>api</mat-icon>
+            <span>API Docs / Endpoint</span>
+          </a>
+        }
+      </div>
+    </header>
+
+    <!-- Details Content Grid -->
+    <div class="details-grid">
+      <!-- Left Column: Specs & Overview -->
+      <div class="main-column">
+        <!-- Overview & Description -->
+        <mat-card class="content-card" appearance="outlined">
+          <mat-card-header class="section-card-header">
+            <mat-icon class="section-icon">info</mat-icon>
+            <mat-card-title>Project Overview</mat-card-title>
+          </mat-card-header>
+          <mat-card-content class="section-card-content">
+            <p class="overview-lead">{{ p.description }}</p>
+            @if (p.detailedDescription) {
+              <p class="overview-detail">{{ p.detailedDescription }}</p>
+            }
+          </mat-card-content>
+        </mat-card>
+
+        <!-- Key Features -->
+        @if (p.keyFeatures && p.keyFeatures.length > 0) {
+          <mat-card class="content-card" appearance="outlined">
+            <mat-card-header class="section-card-header">
+              <mat-icon class="section-icon">verified</mat-icon>
+              <mat-card-title>Key Capabilities</mat-card-title>
+            </mat-card-header>
+            <mat-card-content class="section-card-content">
+              <ul class="features-list">
+                @for (feature of p.keyFeatures; track feature) {
+                  <li class="feature-item">
+                    <mat-icon class="feature-icon">check_circle</mat-icon>
+                    <span>{{ feature }}</span>
+                  </li>
+                }
+              </ul>
+            </mat-card-content>
+          </mat-card>
+        }
+
+        <!-- Architecture & Specifications -->
+        @if (p.architectureNotes && p.architectureNotes.length > 0) {
+          <mat-card class="content-card" appearance="outlined">
+            <mat-card-header class="section-card-header">
+              <mat-icon class="section-icon">account_tree</mat-icon>
+              <mat-card-title>Architecture & Engineering</mat-card-title>
+            </mat-card-header>
+            <mat-card-content class="section-card-content">
+              <div class="arch-notes-list">
+                @for (note of p.architectureNotes; track note) {
+                  <div class="arch-note-item">
+                    <mat-icon class="arch-bullet-icon">terminal</mat-icon>
+                    <span>{{ note }}</span>
+                  </div>
+                }
+              </div>
+            </mat-card-content>
+          </mat-card>
+        }
+      </div>
+
+      <!-- Right Column: Tech Stack & Endpoints Metadata -->
+      <div class="sidebar-column">
+        <!-- Technology Stack -->
+        <mat-card class="content-card" appearance="outlined">
+          <mat-card-header class="section-card-header">
+            <mat-icon class="section-icon">layers</mat-icon>
+            <mat-card-title>Technology Stack</mat-card-title>
+          </mat-card-header>
+          <mat-card-content class="section-card-content">
+            <div class="tech-stack-badges">
+              @for (tech of p.techStack; track tech) {
+                <div class="tech-badge">
+                  <span class="tech-name">{{ tech }}</span>
+                </div>
+              }
+            </div>
+          </mat-card-content>
+        </mat-card>
+
+        <!-- URLs & Endpoints -->
+        <mat-card class="content-card" appearance="outlined">
+          <mat-card-header class="section-card-header">
+            <mat-icon class="section-icon">link</mat-icon>
+            <mat-card-title>Endpoints & URLs</mat-card-title>
+          </mat-card-header>
+          <mat-card-content class="section-card-content">
+            <div class="urls-list">
+              @if (p.uiUrl) {
+                <div class="url-entry">
+                  <span class="url-type-label">UI URL</span>
+                  <a [href]="p.uiUrl" target="_blank" rel="noopener noreferrer" class="url-link">
+                    <span class="url-text">{{ p.uiUrl }}</span>
+                    <mat-icon class="ext-icon">open_in_new</mat-icon>
+                  </a>
+                </div>
+              }
+
+              @if (p.apiUrl) {
+                <div class="url-entry">
+                  <span class="url-type-label">API URL</span>
+                  <a [href]="p.apiUrl" target="_blank" rel="noopener noreferrer" class="url-link">
+                    <span class="url-text">{{ p.apiUrl }}</span>
+                    <mat-icon class="ext-icon">open_in_new</mat-icon>
+                  </a>
+                </div>
+              }
+
+              @for (link of p.links; track link.url) {
+                <div class="url-entry">
+                  <span class="url-type-label">{{ link.label }}</span>
+                  <a [href]="link.url" target="_blank" rel="noopener noreferrer" class="url-link">
+                    <span class="url-text">{{ link.url }}</span>
+                    <mat-icon class="ext-icon">{{ link.icon || 'open_in_new' }}</mat-icon>
+                  </a>
+                </div>
+              }
+            </div>
+          </mat-card-content>
+        </mat-card>
+      </div>
+    </div>
+  } @else {
+    <div class="not-found-card">
+      <mat-icon class="not-found-icon">error_outline</mat-icon>
+      <h2>Project Not Found</h2>
+      <p>The requested project could not be located in Wiltech Labs repository.</p>
+      <a mat-flat-button routerLink="/" class="return-home-btn">
+        <mat-icon>home</mat-icon>
+        <span>Return to Project Showcase</span>
+      </a>
+    </div>
+  }
+</div>
