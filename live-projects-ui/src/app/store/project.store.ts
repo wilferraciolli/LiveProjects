@@ -4,6 +4,100 @@ import { Project } from '../models/project.model';
 
 const INITIAL_PROJECTS: Project[] = [
   {
+    id: 'insurly',
+    slug: 'insurly',
+    title: 'Insurly',
+    subtitle: 'Quote Manager',
+    description: 'Instantly generate quotes for car insurances (more types coming soon).',
+    detailedDescription: 'Insurly takes a user\'s details and requests quotes from multiple insurance providers in parallel, then compares the results and surfaces the best offer to the user. Built with a FastAPI Python backend exposing a REST API, deployed on Cloudflare Workers, and an Angular frontend hosted on Cloudflare Pages.',
+    uiUrl: 'https://insurly-5ut.pages.dev/',
+    apiUrl: 'https://insurly-api.wiliam334.workers.dev',
+    category: 'Insurance',
+    iconName: 'shield',
+    status: 'Live',
+    techStack: ['Python', 'Angular', 'Cloudflare', 'FastAPI', 'REST'],
+    links: [
+      { label: 'Live Application', url: 'https://insurly-5ut.pages.dev/', type: 'ui', icon: 'open_in_new' },
+      { label: 'REST API', url: 'https://insurly-api.wiliam334.workers.dev', type: 'api', icon: 'api' },
+      { label: 'GitHub Repository', url: 'https://github.com/wilferraciolli/insurly', type: 'github', icon: 'code' },
+      { label: 'Documentation', url: 'https://insurly-api.wiliam334.workers.dev/docs', type: 'docs', icon: 'menu_book' },
+      { label: 'Health Check', url: 'https://insurly-api.wiliam334.workers.dev/api/health', type: 'external', icon: 'monitor_heart' }
+    ],
+    keyFeatures: [
+      'Single form to capture driver and vehicle details for a car insurance quote',
+      'Fetches and compares quotes from multiple insurance providers at once',
+      'Surfaces the best-value quote to the user, with more insurance types planned',
+      'REST API backend with a live health-check endpoint'
+    ]
+  },
+  {
+    id: 'resource-management',
+    slug: 'resource-management',
+    title: 'Resource Management',
+    subtitle: 'Resource Allocation Manager',
+    description: 'Manage and assign resources within a business — currently used to manage bed assignments within a hospital, but adaptable to track and assign any kind of resource.',
+    detailedDescription: 'Resource Management is a generic resource-tracking and assignment system. Its first real-world use case is managing bed assignments within a hospital, but the underlying model is flexible enough to manage any resource a business needs to allocate. Built with a FastAPI Python backend exposing a REST API, deployed on Cloudflare Workers, and an Angular frontend hosted on Cloudflare Pages.',
+    uiUrl: 'https://resource-management-ui.pages.dev/',
+    apiUrl: 'https://resource-management-api.wiliam334.workers.dev',
+    category: 'Business Operations',
+    iconName: 'inventory_2',
+    status: 'Live',
+    techStack: ['Python', 'Angular', 'Cloudflare', 'FastAPI', 'REST'],
+    links: [
+      { label: 'Live Application', url: 'https://resource-management-ui.pages.dev/', type: 'ui', icon: 'open_in_new' },
+      { label: 'REST API', url: 'https://resource-management-api.wiliam334.workers.dev', type: 'api', icon: 'api' },
+      { label: 'GitHub Repository', url: 'https://github.com/wilferraciolli/resource-management', type: 'github', icon: 'code' },
+      { label: 'Documentation', url: 'https://resource-management-api.wiliam334.workers.dev/docs', type: 'docs', icon: 'menu_book' },
+      { label: 'Health Check', url: 'https://resource-management-api.wiliam334.workers.dev/api/health', type: 'external', icon: 'monitor_heart' }
+    ],
+    keyFeatures: [
+      'Tracks and assigns resources within a business, currently bed assignments in a hospital',
+      'Generic resource model adaptable to other kinds of business resources',
+      'REST API backend with a live health-check endpoint'
+    ]
+  },
+  {
+    id: 'wiltech-labs-ui-libraries',
+    slug: 'wiltech-labs-ui-libraries',
+    title: 'Wiltech Labs UI Libraries',
+    subtitle: 'Shared Angular Component Library',
+    description: 'The shared Angular component and design-system libraries that power every UI across Wiltech Labs, published as public npm packages.',
+    detailedDescription: 'Wiltech Labs UI Libraries is the set of reusable Angular packages — components, design tokens, and shared utilities — that every application in this portfolio is built on. Published under the Wiltech Labs npm organization so the same look, feel, and behavior stay consistent across every project.',
+    category: 'Shared Libraries',
+    iconName: 'widgets',
+    status: 'Live',
+    techStack: ['Angular', 'TypeScript', 'npm'],
+    links: [
+      { label: 'npm Organization', url: 'https://www.npmjs.com/org/wiltech-labs', type: 'external', icon: 'open_in_new' },
+      { label: 'GitHub Repository', url: 'https://github.com/wilferraciolli/ngx-libraries', type: 'github', icon: 'code' }
+    ],
+    keyFeatures: [
+      'Shared Angular component library consumed by every Wiltech Labs application',
+      'Centralized design tokens and styling for a consistent look and feel',
+      'Published as versioned public packages under the @wiltech-labs npm organization'
+    ]
+  },
+  {
+    id: 'wiltech-labs-python-libraries',
+    slug: 'wiltech-labs-python-libraries',
+    title: 'Wiltech Labs Python Libraries',
+    subtitle: 'Shared Python Library',
+    description: 'The shared Python libraries and utilities that power every backend service across Wiltech Labs.',
+    detailedDescription: 'Wiltech Labs Python Libraries is the set of reusable Python packages — shared utilities, common models, and conventions — that every FastAPI backend in this portfolio is built on, keeping backend services consistent and avoiding duplicated code across projects.',
+    category: 'Shared Libraries',
+    iconName: 'deployed_code',
+    status: 'Live',
+    techStack: ['Python', 'pip'],
+    links: [
+      { label: 'GitHub Repository', url: 'https://github.com/wilferraciolli/py-libraries', type: 'github', icon: 'code' }
+    ],
+    keyFeatures: [
+      'Shared Python utilities and common models consumed by every Wiltech Labs backend',
+      'Keeps conventions and patterns consistent across FastAPI services',
+      'Published as versioned Python packages'
+    ]
+  },
+  {
     id: 'ai-analytics-agent',
     slug: 'ai-analytics-agent',
     title: 'Nexus AI Intelligence Platform',
