@@ -89,6 +89,7 @@ const INITIAL_PROJECTS: Project[] = [
     status: 'Live',
     techStack: ['Python', 'pip'],
     links: [
+      { label: 'PyPI Package', url: 'https://pypi.org/project/wiltech-labs-rest/', type: 'external', icon: 'open_in_new' },
       { label: 'GitHub Repository', url: 'https://github.com/wilferraciolli/py-libraries', type: 'github', icon: 'code' }
     ],
     keyFeatures: [
